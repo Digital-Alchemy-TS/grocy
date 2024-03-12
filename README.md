@@ -6,8 +6,8 @@
 
 API adapters for the Grocy application. Contains basic adapters for:
 - `Battery`
-- `Chores
-- `Objects
+- `Chores`
+- `Objects`
 - `Recipe`
 - `Stock`
 - `System`
