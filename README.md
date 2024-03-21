@@ -1,5 +1,8 @@
 ## Description
 
+- Extended docs: https://docs.digital-alchemy.app/Grocy
+- Discord: https://discord.digital-alchemy.app
+
 > See https://grocy.info/
 >
 > Grocy is a web-based self-hosted groceries & household management solution for your home.
