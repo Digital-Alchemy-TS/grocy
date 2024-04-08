@@ -3,7 +3,10 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
-  - hass
   - gotify
+  - grocy
+  - hass
+  - printlabel
+  - USERFIELDS
 ignoreWords: []
 import: []

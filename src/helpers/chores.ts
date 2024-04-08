@@ -44,7 +44,11 @@ export interface GrocyChore {
 export type GrocyChorePeriodType = "daily";
 export type GrocyChoreAssignmentType = "in-alphabetical-order";
 
-export interface GrocyObjectChoreDetail<USERFIELDS extends object = object> {
+export interface GrocyChoreUserfields {
+  //
+}
+
+export interface GrocyObjectChoreDetail {
   assignment_config: string;
   assignment_type: GrocyChoreAssignmentType;
   consume_product_on_execution: boolean;
@@ -62,7 +66,7 @@ export interface GrocyObjectChoreDetail<USERFIELDS extends object = object> {
   rollover: boolean;
   row_created_timestamp: Date;
   start_date: Date;
-  userfields: USERFIELDS;
+  userfields?: GrocyChoreUserfields;
 }
 
 export interface NextExecutionAssignedUser {

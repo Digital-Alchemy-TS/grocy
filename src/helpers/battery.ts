@@ -4,6 +4,11 @@ export interface GrocyBattery {
   id: number;
   last_tracked_time: Date;
   next_estimated_charge_time: Date;
+  userfields?: GrocyBatteryUserfields;
+}
+
+export interface GrocyBatteryUserfields {
+  //
 }
 
 export interface Battery {

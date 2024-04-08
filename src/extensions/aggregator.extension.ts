@@ -9,13 +9,15 @@ import {
   CHORE_CACHE_UPDATED,
   GROCY_REBUILD_CACHE,
   GrocyBattery,
+  GrocyBatteryUserfields,
   GrocyChore,
   GrocyObjectChoreDetail,
   GrocyTask,
+  GrocyTaskUserfields,
   TASK_CACHE_UPDATED,
 } from "../helpers";
 
-export function Aggregator<USERFIELDS extends object>({
+export function Aggregator({
   scheduler,
   logger,
   grocy,
@@ -36,20 +38,20 @@ export function Aggregator<USERFIELDS extends object>({
   });
 
   const aggregator = {
-    BATTERY_CACHE: new Set<GrocyBattery & { userfields: USERFIELDS }>(),
-    CHORES_CACHE: new Set<GrocyObjectChoreDetail<USERFIELDS> & GrocyChore>(),
-    TASKS_CACHE: new Set<GrocyTask & { userfields: USERFIELDS }>(),
+    BATTERY_CACHE: new Set<GrocyBattery>(),
+    CHORES_CACHE: new Set<GrocyObjectChoreDetail & GrocyChore>(),
+    TASKS_CACHE: new Set<GrocyTask>(),
 
     async buildBatteryCache(): Promise<void> {
       const battery = await grocy.battery.listBatteries();
-      const cache = new Set<GrocyBattery & { userfields: USERFIELDS }>();
+      const cache = new Set<GrocyBattery>();
 
       await eachLimit(
         battery,
         config.grocy.USERFIELDS_FETCH_RATE,
         async battery => {
           const userfields =
-            await grocy.object.listObjectUserFields<USERFIELDS>({
+            await grocy.object.listObjectUserFields<GrocyBatteryUserfields>({
               id: battery.id.toString(),
               type: "batteries",
             });
@@ -66,7 +68,7 @@ export function Aggregator<USERFIELDS extends object>({
 
     async buildChoresCache(): Promise<void> {
       const chores = await grocy.chores.listChores();
-      const cache = new Set<GrocyObjectChoreDetail<USERFIELDS> & GrocyChore>();
+      const cache = new Set<GrocyObjectChoreDetail & GrocyChore>();
 
       await eachLimit(
         chores,
@@ -74,7 +76,7 @@ export function Aggregator<USERFIELDS extends object>({
         async chore => {
           const data = (await grocy.chores.getChoreObject(
             chore.id,
-          )) as GrocyObjectChoreDetail<USERFIELDS>;
+          )) as GrocyObjectChoreDetail;
           cache.add({ ...chore, ...data });
         },
       );
@@ -85,13 +87,14 @@ export function Aggregator<USERFIELDS extends object>({
 
     async buildTaskCache(): Promise<void> {
       const tasks = await grocy.tasks.listTasks();
-      const cache = new Set<GrocyTask & { userfields: USERFIELDS }>();
+      const cache = new Set<GrocyTask>();
 
       await eachLimit(tasks, config.grocy.USERFIELDS_FETCH_RATE, async task => {
-        const userfields = await grocy.object.listObjectUserFields<USERFIELDS>({
-          id: task.id.toString(),
-          type: "tasks",
-        });
+        const userfields =
+          await grocy.object.listObjectUserFields<GrocyTaskUserfields>({
+            id: task.id.toString(),
+            type: "tasks",
+          });
         cache.add({
           ...task,
           userfields,

@@ -12,10 +12,7 @@ type ExecuteChoreRequest = {
   tracked_time: Date;
 };
 
-export function Chores<USERFIELDS extends object = object>({
-  grocy,
-  logger,
-}: TServiceParams) {
+export function Chores({ grocy, logger }: TServiceParams) {
   return {
     async executeChore(id: string) {
       logger.trace("executeChore");
@@ -47,7 +44,7 @@ export function Chores<USERFIELDS extends object = object>({
 
     async getChoreObject(id: number) {
       logger.trace("getChoreObject");
-      return await grocy.fetch<GrocyObjectChoreDetail<USERFIELDS>>({
+      return await grocy.fetch<GrocyObjectChoreDetail>({
         url: `/objects/chores/${id}`,
       });
     },

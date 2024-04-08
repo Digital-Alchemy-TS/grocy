@@ -10,6 +10,7 @@ export interface GrocyTask {
   id: number;
   name: string;
   row_created_timestamp: Date;
+  userfields?: GrocyTaskUserfields;
 }
 
 export interface AssignedToUser {
@@ -28,4 +29,8 @@ export interface Category {
   id: number;
   name: string;
   row_created_timestamp: Date;
+}
+
+export interface GrocyTaskUserfields {
+  //
 }
