@@ -31,7 +31,7 @@ export function Aggregator({
     await aggregator.buildTaskCache();
     GROCY_REBUILD_CACHE.setToCurrentTime();
   }
-  lifecycle.onPostConfig(async () => await refresh());
+  lifecycle.onBootstrap(async () => await refresh());
   scheduler.cron({
     exec: async () => await refresh(),
     schedule: CronExpression.EVERY_2_HOURS,
