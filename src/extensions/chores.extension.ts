@@ -73,7 +73,7 @@ export function Chores({ grocy, logger }: TServiceParams) {
 
     async recalculateAssignments() {
       logger.trace("recalculateAssignments");
-      return await this.grocy({
+      return await grocy.fetch({
         url: `/chores/executions/calculate-next-assignments`,
       });
     },

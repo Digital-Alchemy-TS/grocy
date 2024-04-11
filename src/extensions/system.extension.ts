@@ -3,24 +3,32 @@ import dayjs, { Dayjs } from "dayjs";
 
 import { GROCY_DATABASE_UPDATED } from "../helpers";
 
-export function System({ lifecycle, grocy, logger }: TServiceParams) {
+export function System({
+  lifecycle,
+  grocy,
+  logger,
+  event,
+  config,
+}: TServiceParams) {
+  let LAST_CHANGED_TIME: Dayjs;
+
   lifecycle.onBootstrap(async () => {
     try {
-      this.LAST_CHANGED_TIME = await this.getSystemDbChangedTime();
+      LAST_CHANGED_TIME = await grocy.system.getSystemDbChangedTime();
     } catch {
-      this.logger.fatal("Cannot contact grocy");
+      logger.fatal("Cannot contact grocy");
     }
     setInterval(async () => {
       try {
-        const last = await this.getSystemDbChangedTime();
-        if (last.isAfter(this.LAST_CHANGED_TIME)) {
-          this.LAST_CHANGED_TIME = last;
-          this.event.emit(GROCY_DATABASE_UPDATED);
+        const last = await grocy.system.getSystemDbChangedTime();
+        if (last.isAfter(LAST_CHANGED_TIME)) {
+          LAST_CHANGED_TIME = last;
+          event.emit(GROCY_DATABASE_UPDATED);
         }
       } catch (error) {
-        this.logger.error({ error }, "Grocy database time poll failed");
+        logger.error({ error }, "Grocy database time poll failed");
       }
-    }, this.pollInterval);
+    }, config.grocy.POLL_INTERVAL);
   });
 
   return {
