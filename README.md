@@ -1,7 +1,7 @@
 ## 🌐 Description
 
 - [Extended docs](https://docs.digital-alchemy.app/Grocy)
-- [Discord](https://discord.com/invite/mtWHk36upW)
+- [Discord](https://discord.gg/JkZ35Gv97Y)
 
 > See https://grocy.info/
 >
