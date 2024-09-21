@@ -9,9 +9,10 @@ type GrocyCreateObject = {
 
 type GrocyGetObject = {
   id: number;
-  type: GrocyEntity;
+  type: EntityTypes;
 };
 
+// eslint-disable-next-line sonarjs/redundant-type-aliases
 type GrocyDeleteObject = GrocyGetObject;
 type GrocyGetObjectUserfields = {
   id: string;
@@ -21,7 +22,7 @@ type GrocyGetObjectUserfields = {
 type GrocyUpdateObject = {
   body: GrocyEntity;
   id: string;
-  type: GrocyEntity;
+  type: EntityTypes;
 };
 
 export function ObjectExtension({ logger, grocy }: TServiceParams) {
@@ -50,10 +51,7 @@ export function ObjectExtension({ logger, grocy }: TServiceParams) {
       });
     },
 
-    async listObjectUserFields<T>({
-      id,
-      type,
-    }: GrocyGetObjectUserfields): Promise<T> {
+    async listObjectUserFields<T>({ id, type }: GrocyGetObjectUserfields): Promise<T> {
       logger.trace("listObjectUserFields");
       return await grocy.fetch({
         url: `/userfields/${type}/${id}`,

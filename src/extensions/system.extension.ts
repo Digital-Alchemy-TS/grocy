@@ -3,13 +3,7 @@ import dayjs, { Dayjs } from "dayjs";
 
 import { GROCY_DATABASE_UPDATED } from "../helpers";
 
-export function System({
-  lifecycle,
-  grocy,
-  logger,
-  event,
-  config,
-}: TServiceParams) {
+export function System({ lifecycle, grocy, logger, event, config }: TServiceParams) {
   let LAST_CHANGED_TIME: Dayjs;
 
   lifecycle.onBootstrap(async () => {

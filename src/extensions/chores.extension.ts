@@ -1,10 +1,6 @@
 import { TServiceParams } from "@digital-alchemy/core";
 
-import {
-  GrocyChore,
-  GrocyChoreDetails,
-  GrocyObjectChoreDetail,
-} from "../helpers";
+import { GrocyChore, GrocyChoreDetails, GrocyObjectChoreDetail } from "../helpers";
 
 type ExecuteChoreRequest = {
   done_by: number;

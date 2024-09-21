@@ -2,6 +2,7 @@ export * from "./aggregator.extension";
 export * from "./battery.extension";
 export * from "./chores.extension";
 export * from "./grocy-fetch.extension";
+export * from "./internal.extension";
 export * from "./misc.extension";
 export * from "./object.extension";
 export * from "./recipe.extension";
