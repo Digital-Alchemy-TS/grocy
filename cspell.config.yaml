@@ -3,10 +3,17 @@ ignorePaths: []
 dictionaryDefinitions: []
 dictionaries: []
 words:
+  - barcodes
+  - barcodes
   - gotify
   - grocy
   - hass
+  - postdata
   - printlabel
-  - USERFIELDS
+  - sonarjs
+  - userentities
+  - userentities
+  - userfields
+  - userobjects
 ignoreWords: []
 import: []
