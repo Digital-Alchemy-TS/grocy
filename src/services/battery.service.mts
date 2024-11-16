@@ -1,6 +1,6 @@
 import { TServiceParams } from "@digital-alchemy/core";
 
-import { Battery, GrocyBattery } from "../helpers";
+import { Battery, GrocyBattery } from "../helpers/index.mts";
 
 interface GrocyBatteryResponse {
   battery: Battery;

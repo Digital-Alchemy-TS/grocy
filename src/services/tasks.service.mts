@@ -1,6 +1,6 @@
 import { TServiceParams } from "@digital-alchemy/core";
 
-import { GrocyTask } from "../helpers";
+import { GrocyTask } from "../helpers/index.mts";
 
 export function Tasks({ logger, grocy }: TServiceParams) {
   return {

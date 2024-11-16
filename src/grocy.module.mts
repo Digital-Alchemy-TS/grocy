@@ -13,7 +13,7 @@ import {
   System,
   Tasks,
   User,
-} from "./extensions";
+} from "./services/index.mts";
 
 export const LIB_GROCY = CreateLibrary({
   configuration: {

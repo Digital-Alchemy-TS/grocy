@@ -1,6 +1,6 @@
 import { TServiceParams } from "@digital-alchemy/core";
 
-import { GrocyUser } from "../helpers";
+import { GrocyUser } from "../helpers/index.mts";
 
 type EditUser = {
   id: string;

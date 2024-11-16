@@ -1,7 +1,7 @@
 import { TServiceParams } from "@digital-alchemy/core";
 import dayjs, { Dayjs } from "dayjs";
 
-import { GROCY_DATABASE_UPDATED } from "../helpers";
+import { GROCY_DATABASE_UPDATED } from "../helpers/index.mts";
 
 export function System({ lifecycle, grocy, logger, event, config }: TServiceParams) {
   let LAST_CHANGED_TIME: Dayjs;

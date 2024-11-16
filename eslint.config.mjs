@@ -46,9 +46,9 @@ export default [
       "plugin:prettier/recommended",
       "plugin:@cspell/recommended",
     )
-    .map(config => ({ ...config, files: ["src/**/*.ts"] })),
+    .map(config => ({ ...config, files: ["src/**/*.mts"] })),
   {
-    files: ["src/**/*.ts"],
+    files: ["src/**/*.mts"],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 5,
@@ -58,6 +58,10 @@ export default [
       },
     },
     rules: {
+      "sonarjs/no-unused-expressions": "off",
+      "unicorn/expiring-todo-comments": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "sonarjs/no-empty-function": "off",
       "prettier/prettier": "error",
       "unicorn/switch-case-braces": "off",
       "unicorn/prefer-module": "off",
@@ -130,7 +134,7 @@ export default [
   },
   // module definitions
   {
-    files: ["src/**/*.module.ts"],
+    files: ["src/**/*.module.mts"],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 5,
@@ -144,7 +148,7 @@ export default [
     },
   },
   {
-    files: ["src/**/*.spec.ts"],
+    files: ["src/**/*.spec.mts"],
     languageOptions: {
       globals: { ...globals.jest },
       parser: tsParser,
