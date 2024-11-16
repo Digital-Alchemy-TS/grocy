@@ -10,7 +10,7 @@ import {
   GrocyTask,
   GrocyTaskUserfields,
   TASK_CACHE_UPDATED,
-} from "../helpers";
+} from "../helpers/index.mts";
 
 export function Aggregator({ scheduler, logger, grocy, event, config, lifecycle }: TServiceParams) {
   async function refresh() {

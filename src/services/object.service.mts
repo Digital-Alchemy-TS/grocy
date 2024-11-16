@@ -1,6 +1,6 @@
 import { TServiceParams } from "@digital-alchemy/core";
 
-import { EntityTypes, GrocyEntity, UserFieldTypes } from "../helpers";
+import { EntityTypes, GrocyEntity, UserFieldTypes } from "../helpers/index.mts";
 
 type GrocyCreateObject = {
   body: GrocyEntity;

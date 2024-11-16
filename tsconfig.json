@@ -16,6 +16,7 @@
     "noUnusedParameters": true,
     "rootDir": "./src",
     "skipDefaultLibCheck": true,
+    "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "sourceMap": true,
@@ -27,7 +28,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.mts"
   ],
   "exclude": [
     "node_modules",
