@@ -26,7 +26,7 @@ export function System({ lifecycle, grocy, logger, event, config }: TServicePara
   });
 
   return {
-    LAST_CHANGED_TIME: Dayjs,
+    LAST_CHANGED_TIME: undefined as Dayjs,
 
     async getSystemConfig() {
       logger.trace("getSystemConfig");
